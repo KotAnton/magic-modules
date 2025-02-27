@@ -3,6 +3,7 @@ package cai2hcl
 import (
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v6/cai2hcl/common"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v6/cai2hcl/services/compute"
+	"github.com/GoogleCloudPlatform/terraform-google-conversion/v6/cai2hcl/services/container"
 	"github.com/GoogleCloudPlatform/terraform-google-conversion/v6/cai2hcl/services/resourcemanager"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	tpg_provider "github.com/hashicorp/terraform-provider-google-beta/google-beta/provider"
@@ -20,6 +21,8 @@ var AssetTypeToConverter = map[string]string{
 
 	compute.ComputeRegionHealthCheckAssetType: "google_compute_region_health_check",
 
+	container.ContainerClusterAssetType: "google_container_cluster",
+
 	resourcemanager.ProjectAssetType:        "google_project",
 	resourcemanager.ProjectBillingAssetType: "google_project",
 }
@@ -33,6 +36,8 @@ var ConverterMap = map[string]common.Converter{
 	"google_compute_region_backend_service": compute.NewComputeRegionBackendServiceConverter(provider),
 
 	"google_compute_region_health_check": compute.NewComputeRegionHealthCheckConverter(provider),
+
+	"google_container_cluster": container.NewContainerClusterConverter(provider),
 
 	"google_project": resourcemanager.NewProjectConverter(provider),
 }

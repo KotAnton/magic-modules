@@ -1,0 +1,115 @@
+[
+  {
+    "name": "//container.googleapis.com/projects/test-project/locations/us-central1/clusters/test-cluster",
+    "asset_type": "container.googleapis.com/Cluster",
+    "ancestry_path": "organizations/123456789012/folders/1234567890/project/test-project",
+    "resource": {
+      "version": "v1",
+      "discovery_document_uri": "https://www.googleapis.com/discovery/v1/apis/container/v1/rest",
+      "discovery_name": "Cluster",
+      "parent": "//cloudresourcemanager.googleapis.com/projects/test-project",
+      "data": {
+        "addonsConfig": {
+          "horizontalPodAutoscaling": {
+            "disabled": false
+          },
+          "httpLoadBalancing": {
+            "disabled": false
+          },
+          "networkPolicyConfig": {
+            "disabled": true
+          },
+          "gcpFilestoreCsiDriverConfig": {
+            "disabled": false
+          }
+        },
+        "clusterIpv4Cidr": "10.52.0.0/14",
+        "databaseEncryption": {
+          "state": "DECRYPTED"
+        },
+        "defaultMaxPodsConstraint": {
+          "maxPodsPerNode": 110
+        },
+        "description": "GKE test cluster for cai2hcl conversion",
+        "initialNodeCount": 1,
+        "ipAllocationPolicy": {
+          "clusterIpv4CidrBlock": "10.52.0.0/14",
+          "clusterSecondaryRangeName": "gke-test-cluster-pods-c889c44a",
+          "servicesIpv4CidrBlock": "10.56.0.0/20",
+          "servicesSecondaryRangeName": "gke-test-cluster-services-c889c44a",
+          "useIpAliases": true
+        },
+        "location": "us-central1",
+        "locations": [
+          "us-central1-a",
+          "us-central1-b",
+          "us-central1-c"
+        ],
+        "loggingService": "logging.googleapis.com/kubernetes",
+        "masterAuthorizedNetworksConfig": {
+          "cidrBlocks": [
+            {
+              "cidrBlock": "10.0.0.0/8",
+              "displayName": "internal-network"
+            },
+            {
+              "cidrBlock": "172.16.0.0/12",
+              "displayName": "vpn-network"
+            }
+          ],
+          "enabled": true
+        },
+        "monitoringService": "monitoring.googleapis.com/kubernetes",
+        "name": "test-cluster",
+        "network": "projects/test-project/global/networks/default",
+        "networkConfig": {
+          "network": "projects/test-project/global/networks/default",
+          "subnetwork": "projects/test-project/regions/us-central1/subnetworks/default"
+        },
+        "networkPolicy": {
+          "enabled": true,
+          "provider": "CALICO"
+        },
+        "nodeConfig": {
+          "diskSizeGb": 100,
+          "diskType": "pd-standard",
+          "imageType": "COS_CONTAINERD",
+          "machineType": "e2-medium",
+          "metadata": {
+            "disable-legacy-endpoints": "true"
+          },
+          "oauthScopes": [
+            "https://www.googleapis.com/auth/devstorage.read_only",
+            "https://www.googleapis.com/auth/logging.write",
+            "https://www.googleapis.com/auth/monitoring",
+            "https://www.googleapis.com/auth/service.management.readonly",
+            "https://www.googleapis.com/auth/servicecontrol",
+            "https://www.googleapis.com/auth/trace.append"
+          ],
+          "serviceAccount": "default",
+          "shieldedInstanceConfig": {
+            "enableIntegrityMonitoring": true,
+            "enableSecureBoot": true,
+            "enableVtpm": true
+          }
+        },
+        "privateClusterConfig": {
+          "enablePrivateEndpoint": false,
+          "enablePrivateNodes": true,
+          "masterIpv4CidrBlock": "172.16.0.0/28",
+          "privateEndpoint": "172.16.0.2",
+          "publicEndpoint": "34.122.102.78"
+        },
+        "releaseChannel": {
+          "channel": "REGULAR"
+        },
+        "resourceLabels": {
+          "environment": "development",
+          "created-by": "terraform",
+          "team": "platform"
+        },
+        "subnetwork": "projects/test-project/regions/us-central1/subnetworks/default"
+      }
+    }
+  }
+]

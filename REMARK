@@ -1,0 +1,41 @@
+1. Autopilot vs Standard Cluster Compatibility
+    - Added detection of Autopilot clusters with isAutopilot flag
+    - Implemented selective field processing based on cluster type
+    - Added validateAndFixHclData() method to filter out incompatible fields
+    - Removed node-related configurations for Autopilot clusters that would cause Terraform errors
+  2. IP Allocation Handling
+    - Implemented priority-based selection between modern and legacy IP configurations
+    - Prefer IP allocation policy (VPC-native) over legacy cluster_ipv4_cidr
+    - Prevent inclusion of both approaches in the same HCL to avoid conflicts
+  3. Empty Block Prevention
+    - Added logic to skip empty blocks like master_auth that have no meaningful content
+    - Improved assessment of nested structures to ensure they only appear when they have content
+  4. Field Filtering
+    - Added more careful field selection with explicit conditions
+    - Using string length and map size checks before including optional fields
+    - Added checks for nil pointers at multiple levels
+  5. Shielded Node Handling
+    - Added special case handling for the potential conflict between enable_shielded_nodes and node_config-level shielded_instance_config
+
+  Test Cases for Validation
+
+  1. Autopilot Cluster Tests
+    - Enhanced tests to verify that incompatible fields are properly removed
+    - Added assertions to check absence of Standard-only fields in Autopilot HCL
+  2. IP Configuration Tests
+    - Added specific test for IP allocation policy vs legacy CIDR handling
+    - Verified that only one approach is used, prioritizing the modern approach
+  3. Empty Block Tests
+    - Added test case for empty master_auth block removal
+    - Ensured that empty blocks aren't included in the HCL output
+
+  Sample Data Updates
+
+  - Updated the sample Autopilot JSON to include both correct and incorrect (conflicting) properties
+  - Ensured our sample data tests both the "clean" input case and the "needs fixing" case
+
+  These enhancements ensure that the generated HCL is not only syntactically correct but also semantically valid and applicable by Terraform without conflicts between properties. The validation logic handles
+  the complex relationships between GKE cluster properties, preventing situations where mutually exclusive settings are included in the same configuration.
+
+  The implementation is now significantly more robust in handling the complex GKE API representation, especially with regard to the fundamental differences between Autopilot and Standard clusters, as well as
+  the evolving networking model in GKE with VPC-native (IP aliases) vs routes-based networking.

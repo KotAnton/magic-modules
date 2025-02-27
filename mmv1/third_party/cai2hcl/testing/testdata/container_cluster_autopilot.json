@@ -1,0 +1,113 @@
+[
+  {
+    "name": "//container.googleapis.com/projects/test-project/locations/us-central1/clusters/autopilot-cluster",
+    "asset_type": "container.googleapis.com/Cluster",
+    "ancestry_path": "organizations/123456789012/folders/1234567890/project/test-project",
+    "resource": {
+      "version": "v1",
+      "discovery_document_uri": "https://www.googleapis.com/discovery/v1/apis/container/v1/rest",
+      "discovery_name": "Cluster",
+      "parent": "//cloudresourcemanager.googleapis.com/projects/test-project",
+      "data": {
+        "addonsConfig": {
+          "horizontalPodAutoscaling": {
+            "disabled": false
+          },
+          "httpLoadBalancing": {
+            "disabled": false
+          },
+          "networkPolicyConfig": {
+            "disabled": true
+          },
+          "gcpFilestoreCsiDriverConfig": {
+            "disabled": false
+          },
+          "dnsCacheConfig": {
+            "disabled": false
+          },
+          "gcsFuseCsiDriverConfig": {
+            "disabled": false
+          }
+        },
+        "autopilot": {
+          "enabled": true
+        },
+        "databaseEncryption": {
+          "state": "DECRYPTED"
+        },
+        "description": "GKE Autopilot cluster for cai2hcl conversion",
+        "ipAllocationPolicy": {
+          "clusterIpv4CidrBlock": "10.100.0.0/14",
+          "servicesIpv4CidrBlock": "10.104.0.0/20",
+          "useIpAliases": true
+        },
+        "clusterIpv4Cidr": "10.0.0.0/14", 
+        "initialNodeCount": 3,
+        "location": "us-central1",
+        "locations": ["us-central1-a", "us-central1-b", "us-central1-c"],
+        "loggingService": "logging.googleapis.com/kubernetes",
+        "monitoringService": "monitoring.googleapis.com/kubernetes",
+        "name": "autopilot-cluster",
+        "network": "projects/test-project/global/networks/default",
+        "nodeConfig": {
+          "machineType": "e2-standard-4",
+          "diskSizeGb": 100,
+          "diskType": "pd-ssd",
+          "oauthScopes": ["https://www.googleapis.com/auth/cloud-platform"]
+        },
+        "defaultMaxPodsConstraint": {
+          "maxPodsPerNode": 110
+        },
+        "enableKubernetesAlpha": true,
+        "networkConfig": {
+          "network": "projects/test-project/global/networks/default",
+          "subnetwork": "projects/test-project/regions/us-central1/subnetworks/default",
+          "dnsConfig": {
+            "clusterDns": "CLOUD_DNS",
+            "clusterDnsScope": "CLUSTER_SCOPE",
+            "clusterDnsDomain": "cluster.local"
+          },
+          "serviceExternalIpsConfig": {
+            "enabled": false
+          }
+        },
+        "releaseChannel": {
+          "channel": "REGULAR"
+        },
+        "verticalPodAutoscaling": {
+          "enabled": true
+        },
+        "workloadIdentityConfig": {
+          "workloadPool": "test-project.svc.id.goog"
+        },
+        "meshCertificates": {
+          "enableCertificates": true
+        },
+        "masterAuthorizedNetworksConfig": {
+          "enabled": true,
+          "cidrBlocks": [
+            {
+              "cidrBlock": "10.0.0.0/8",
+              "displayName": "internal-network"
+            }
+          ]
+        },
+        "notificationConfig": {
+          "pubsub": {
+            "enabled": true,
+            "topic": "projects/test-project/topics/gke-notifications"
+          }
+        },
+        "costManagementConfig": {
+          "enabled": true
+        },
+        "resourceLabels": {
+          "environment": "development",
+          "created-by": "terraform",
+          "managed-by": "autopilot"
+        },
+        "subnetwork": "projects/test-project/regions/us-central1/subnetworks/default"
+      }
+    }
+  }
+]
